@@ -66,9 +66,9 @@ class App extends Component {
   render() {
    // console.log(ScoreboardContext);
     return (
-      <Provider>
+      <Provider value={this.state.players}>
         <div className="scoreboard">
-          <Header players={this.state.players} />
+          <Header />
 
           <PlayerList 
             players={this.state.players} 
