@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+//import {ScoreboardContext} from './Context';
+import {Provider} from './Context';
 import Header from './Header';
 import PlayerList from './PlayerList';
 import AddPlayerForm from './AddPlayerForm';
@@ -62,18 +64,21 @@ class App extends Component {
   }
 
   render() {
+   // console.log(ScoreboardContext);
     return (
-      <div className="scoreboard">
-        <Header players={this.state.players} />
+      <Provider>
+        <div className="scoreboard">
+          <Header players={this.state.players} />
 
-        <PlayerList 
-          players={this.state.players} 
-          changeScore={this.handleScoreChange}
-          removePlayer={this.handleRemovePlayer}   
-        />
-        
-        <AddPlayerForm addPlayer={this.handleAddPlayer} />
-      </div>
+          <PlayerList 
+            players={this.state.players} 
+            changeScore={this.handleScoreChange}
+            removePlayer={this.handleRemovePlayer}   
+          />
+          
+          <AddPlayerForm addPlayer={this.handleAddPlayer} />
+        </div>
+      </Provider>
     );
   }
 }
