@@ -64,16 +64,17 @@ class App extends Component {
   }
 
   render() {
-   // console.log(ScoreboardContext);
     return (
-      <Provider value={this.state.players}>
+      <Provider value={{
+        players: this.state.players,
+        actions: {
+          changeScore: this.handleScoreChange  
+        }
+      }}>
         <div className="scoreboard">
           <Header />
 
-          <PlayerList 
-            changeScore={this.handleScoreChange}
-            removePlayer={this.handleRemovePlayer}   
-          />
+          <PlayerList removePlayer={this.handleRemovePlayer} />
           
           <AddPlayerForm addPlayer={this.handleAddPlayer} />
         </div>
